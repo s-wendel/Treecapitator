@@ -1,0 +1,6 @@
+name: Treecapitator
+version: ${project.version}
+main: shwendel.treecapitator.Treecapitator
+api-version: 1.19
+authors: [ shwendel ]
+description: Decapitate those pesky trees
