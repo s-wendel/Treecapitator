@@ -1,6 +1,7 @@
 name: Treecapitator
-version: 1.0.1
+version: 1.0.2
 main: shwendel.treecapitator.Treecapitator
 api-version: 1.19
 authors: [ shwendel ]
 description: Decapitate those pesky trees
+softdepend: [ Jobs ]

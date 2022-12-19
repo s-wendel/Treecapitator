@@ -3,6 +3,7 @@ package shwendel.treecapitator;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.plugin.java.JavaPlugin;
+import shwendel.treecapitator.listener.JobsTreeCutListener;
 import shwendel.treecapitator.listener.TreeCutListener;
 
 public final class Treecapitator extends JavaPlugin {
@@ -11,9 +12,17 @@ public final class Treecapitator extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        instance = this;
-        getServer().getPluginManager().registerEvents(new TreeCutListener(), this);
         saveDefaultConfig();
+
+        instance = this;
+
+
+        if(getServer().getPluginManager().getPlugin("Jobs") != null) {
+            getServer().getPluginManager().registerEvents(new JobsTreeCutListener(), this);
+        } else {
+            getServer().getPluginManager().registerEvents(new TreeCutListener(), this);
+        }
+
     }
 
     @Override
