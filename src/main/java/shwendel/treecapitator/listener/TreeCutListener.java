@@ -16,7 +16,8 @@ import java.util.List;
 
 public class TreeCutListener implements Listener {
 
-    final BlockFace[] faces = Treecapitator.getInstance().getConfig().getBoolean("options.diagonal_logs")
+    final boolean diagonal_logs = Treecapitator.getInstance().getConfig().getBoolean("options.diagonal_logs");
+    final BlockFace[] faces = diagonal_logs
             ? new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.NORTH_EAST, BlockFace.EAST, BlockFace.SOUTH_EAST, BlockFace.SOUTH, BlockFace.SOUTH_WEST, BlockFace.WEST, BlockFace.NORTH_WEST }
             : new BlockFace[] { BlockFace.UP, BlockFace.DOWN, BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST };
 
@@ -62,10 +63,16 @@ public class TreeCutListener implements Listener {
                     }
 
                     for(BlockFace face : faces) {
-                        Block relative = log.getRelative(face);
-                        if(Treecapitator.getInstance().isLog(relative) && !logsLeft.contains(relative)) {
-                            logsLeft.add(relative);
+
+                        BlockFace[] relatives = new BlockFace[] { BlockFace.SELF, BlockFace.UP, BlockFace.DOWN };
+
+                        for(BlockFace relative : relatives) {
+                            Block block = log.getRelative(face).getRelative(relative);
+                            if(Treecapitator.getInstance().isLog(block) && !logsLeft.contains(block)) {
+                                logsLeft.add(block);
+                            }
                         }
+
                     }
 
                     logsLeft.remove(0);

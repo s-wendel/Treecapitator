@@ -1,5 +1,5 @@
 name: Treecapitator
-version: ${project.version}
+version: 1.0.1
 main: shwendel.treecapitator.Treecapitator
 api-version: 1.19
 authors: [ shwendel ]
