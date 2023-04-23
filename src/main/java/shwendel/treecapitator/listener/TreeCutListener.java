@@ -35,6 +35,12 @@ public class TreeCutListener implements Listener {
 
         if(Treecapitator.getInstance().isLog(event.getBlock())) {
 
+            if(Treecapitator.getInstance().getConfig().isSet("options.shift_to_activate")) {
+                if(Treecapitator.getInstance().getConfig().getBoolean("options.shift_to_activate") && !player.isSneaking()) {
+                    return;
+                }
+            }
+
             List<Block> logsLeft = new ArrayList<>();
             logsLeft.add(event.getBlock());
 

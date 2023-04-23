@@ -4,4 +4,4 @@ options:
   permission_to_decapitate: ''
   diagonal_logs: false
   mangrove_roots: false
-
+  shift_to_activate: false
